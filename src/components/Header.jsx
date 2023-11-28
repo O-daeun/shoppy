@@ -10,7 +10,7 @@ export default function Header() {
         <SiShopee className="font-extrabold text-3xl" />
         Shoppy
       </Link>
-      <nav className="flex items-center">
+      <nav className="flex gap-2 items-center font-bold text-lg">
         <Link to="/products">Products</Link>
         <Link to="/carts">
           <FaShoppingCart />

@@ -1,15 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./pages/NotFound";
-import Home from './pages/Home';
-import Products from './components/Products';
-import Carts from './pages/Carts';
-import AddProducts from './pages/AddProducts';
-import ProductDetails from './pages/ProductDetails';
+import Home from "./pages/Home";
+import Products from "./components/Products";
+import Carts from "./pages/Carts";
+import AddProducts from "./pages/AddProducts";
+import ProductDetails from "./pages/ProductDetails";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const router = createBrowserRouter([
   {
@@ -31,20 +32,24 @@ const router = createBrowserRouter([
       },
       {
         path: "carts",
-        element: <Carts />
+        element: <Carts />,
       },
       {
         path: "add",
-        element: <AddProducts />
-      }
-    ]
-  }
+        element: <AddProducts />,
+      },
+    ],
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient();
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

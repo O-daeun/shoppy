@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export default function AddProducts() {
-
   const [file, setFile] = useState();
   const [name, setName] = useState("");
   const [option, setOption] = useState("");
@@ -13,6 +12,8 @@ export default function AddProducts() {
   const [url] = useState(
     `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
   );
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +34,8 @@ export default function AddProducts() {
         console.log(data);
         document.getElementById("data").innerHTML += data;
       });
+
+   
   };
 
   const handleFileChange = (e) => {

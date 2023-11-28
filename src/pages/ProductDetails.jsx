@@ -1,17 +1,9 @@
-import axios from "axios";
 import React from "react";
-import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 export default function ProductDetails() {
   const { itemId } = useParams();
-  const {
-    isLoading,
-    error,
-    data: products,
-  } = useQuery(["products"], async () => {
-    return axios("/data/products.json").then((res) => res.data.items);
-  });
+  const [isLoading, error, products] = useOutletContext();
   const thisProduct =
     products && products.filter((product) => product.id === itemId)[0];
   return (
