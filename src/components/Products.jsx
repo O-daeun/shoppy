@@ -1,14 +1,27 @@
+import axios from "axios";
 import React from "react";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
+import ProductCard from "./ProductCard";
 
 export default function Products() {
-
-
-  const queryClient = useQueryClient();
-  const { isLoading, error, data } = useQuery(["products"], async () => {
-    return fetch("https://api.cloudinary.com/v1_1/dkixsqfoc/image/upload").then(
-      (res) => res.json()
-    );
+  const {
+    isLoading,
+    error,
+    data: products,
+  } = useQuery(["products"], async () => {
+    return axios("/data/products.json").then((res) => res.data.items);
   });
-  return <div>Products</div>;
+  return (
+    <>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>error❗</p>}
+      {products && (
+        <ul>
+          {products.map((item) => (
+            <ProductCard key={item.id} item={item} />
+          ))}
+        </ul>
+      )}
+    </>
+  );
 }

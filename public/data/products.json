@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "티셔츠",
+      "price": "20,000원",
+      "gender": "여",
+      "option": "XS,S,M,L,XL,2XL",
+      "detail": "사계절 어디에도 코디가 가능한 티셔츠입니다.",
+      "image": "/image/1.webp"
+    },
+    {
+      "id": "2",
+      "name": "청바지",
+      "price": "42,000원",
+      "gender": "남",
+      "option": "XS,S,M,L,XL,2XL",
+      "detail": "사계절 어디에도 코디가 가능한 바지입니다.",
+      "image": "/image/2.webp"
+    },
+    {
+      "id": "3",
+      "name": "후드티",
+      "price": "50,000원",
+      "gender": "여",
+      "option": "XS,S,M,L,XL,2XL",
+      "detail": "사계절 어디에도 코디가 가능한 후드티입니다.",
+      "image": "/image/3.webp"
+    }
+  ]
+}

@@ -7,11 +7,11 @@ const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <>
+    <div className="max-w-7xl m-auto px-5">
       <Header />
       <QueryClientProvider client={queryClient}>
         <Outlet />
       </QueryClientProvider>
-    </>
+    </div>
   );
 }
