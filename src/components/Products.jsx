@@ -3,13 +3,12 @@ import ProductCard from "./ProductCard";
 import { useOutletContext } from "react-router-dom";
 
 export default function Products() {
-  const [isLoading, error, products, setProducts] = useOutletContext();
+  const {isLoading, error, products, handleAdd} = useOutletContext();
   return (
     <>
       <button
         onClick={() =>
-          setProducts((prev) => [
-            ...prev,
+          handleAdd(
             {
               name: "daeun",
               id: "4",
@@ -18,8 +17,7 @@ export default function Products() {
               option: "d",
               detail: "g",
               image: "d",
-            },
-          ])
+            })
         }
       >
         클릭

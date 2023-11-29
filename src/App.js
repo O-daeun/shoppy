@@ -12,6 +12,8 @@ export default function App() {
     return axios("/data/products.json").then((res) => res.data.items);
   });
 
+  const handleAdd = (item) => setProducts([...products, item]);
+
   useEffect(() => {
     setProducts(data);
   }, [data]);
@@ -19,7 +21,7 @@ export default function App() {
   return (
     <div className="max-w-7xl m-auto px-5">
       <Header />
-      <Outlet context={[isLoading, error, products, setProducts]} />
+      <Outlet context={{isLoading, error, products, handleAdd}} />
     </div>
   );
 }
