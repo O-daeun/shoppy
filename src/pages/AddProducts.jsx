@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddProducts() {
-  const {products, handleAdd} = useOutletContext();
-  
+  const { products, handleAdd } = useOutletContext();
+
   const [file, setFile] = useState();
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -18,8 +18,6 @@ export default function AddProducts() {
   const [url] = useState(
     `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
   );
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,10 +48,30 @@ export default function AddProducts() {
       detail,
       image: "d",
     });
-
-    
   };
-  console.log(products);
+
+  // const object = {
+  //   asset_id: "74b7619e1dd2d90cb88cbedaeab6a869",
+  //   public_id: "kfun51qnqcodrai9q5t5",
+  //   version: 1701263841,
+  //   version_id: "52dd82834e402508835d969e86438f94",
+  //   signature: "7bb50d37da257cc3a9602cdb6dc6b285541d1070",
+  //   width: 256,
+  //   height: 256,
+  //   format: "png",
+  //   resource_type: "image",
+  //   created_at: "2023-11-29T13:17:21Z",
+  //   tags: [],
+  //   bytes: 3136,
+  //   type: "upload",
+  //   etag: "ee4dd7fb01baf2914c6c628a090a85e0",
+  //   placeholder: false,
+  //   url: "http://res.cloudinary.com/dkixsqfoc/image/upload/v1701263841/kfun51qnqcodrai9q5t5.png",
+  //   secure_url:
+  //     "https://res.cloudinary.com/dkixsqfoc/image/upload/v1701263841/kfun51qnqcodrai9q5t5.png",
+  //   folder: "",
+  //   original_filename: "favicon",
+  // };
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -68,7 +86,8 @@ export default function AddProducts() {
     setGender(e.target.value);
   };
   const handleOptionChange = (e) => {
-    setOption(e.target.value);
+    let option = e.target.value.split(', ');
+    setOption(option);
   };
   const handleDetailChange = (e) => {
     setDetail(e.target.value);
