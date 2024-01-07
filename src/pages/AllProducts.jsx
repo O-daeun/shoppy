@@ -1,8 +1,8 @@
 import React from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
 import { useOutletContext } from "react-router-dom";
 
-export default function Products() {
+export default function AllProducts() {
   const {isLoading, error, products, handleAdd} = useOutletContext();
   return (
     <>

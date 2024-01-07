@@ -3,9 +3,10 @@ import { useOutletContext, useParams } from "react-router-dom";
 
 export default function ProductDetails() {
   const { itemId } = useParams();
-  const [isLoading, error, products] = useOutletContext();
+  const {isLoading, error, products} = useOutletContext();
   const thisProduct =
     products && products.filter((product) => product.id === itemId)[0];
+    console.log(thisProduct);
   return (
     <>
       {isLoading && <p>로딩중...</p>}

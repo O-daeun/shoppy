@@ -6,11 +6,11 @@ import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
-import Products from "./components/Products";
-import Carts from "./pages/Carts";
+import AllProducts from "./pages/AllProducts";
 import AddProducts from "./pages/AddProducts";
 import ProductDetails from "./pages/ProductDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
+import MyCart from './pages/MyCart';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: <Products />,
+        element: <AllProducts />,
       },
       {
         path: "products/:itemId",
@@ -32,10 +32,10 @@ const router = createBrowserRouter([
       },
       {
         path: "carts",
-        element: <Carts />,
+        element: <MyCart />,
       },
       {
-        path: "add",
+        path: "products/new",
         element: <AddProducts />,
       },
     ],

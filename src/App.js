@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import Navbar from './components/Navbar';
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -19,8 +19,8 @@ export default function App() {
   }, [data]);
 
   return (
-    <div className="max-w-7xl m-auto px-5">
-      <Header />
+    <div>
+      <Navbar />
       <Outlet context={{isLoading, error, products, handleAdd}} />
     </div>
   );
