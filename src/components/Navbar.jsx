@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaPencilAlt } from "react-icons/fa";
 import { SiShopee } from "react-icons/si";
-import { login, logout, onUserStateChange } from "../api/firebase";
 import User from "./User";
-import Button from './ui/Button';
+import Button from "./ui/Button";
+import { useAuthContext } from "../context/AuthContext";
 
 export default function Navbar() {
-  const [user, setUser] = useState();
-  useEffect(() => {
-    onUserStateChange((user) => {
-      console.log(user);
-      setUser(user);
-    });
-  }, []);
+  const { user, login, logout } = useAuthContext();
   return (
     <header className='flex justify-between border-b border-gray-300 p-2'>
-      <Link to='/' className='flex font-bold text-4xl text-brand'>
+      <Link
+        to='/' //
+        className='flex font-bold text-4xl text-brand'
+      >
         <SiShopee />
         Shoppy
       </Link>
@@ -33,8 +30,8 @@ export default function Navbar() {
           </Link>
         )}
         {user && <User user={user} />}
-        {!user && <Button onClick={login} text={'login'} />}
-        {user && <Button onClick={logout} text={'logout'} />}
+        {!user && <Button onClick={login} text={"login"} />}
+        {user && <Button onClick={logout} text={"logout"} />}
       </nav>
     </header>
   );

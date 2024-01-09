@@ -10,7 +10,8 @@ import AllProducts from "./pages/AllProducts";
 import AddProducts from "./pages/AddProducts";
 import ProductDetails from "./pages/ProductDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
-import MyCart from './pages/MyCart';
+import MyCart from "./pages/MyCart";
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -32,11 +33,19 @@ const router = createBrowserRouter([
       },
       {
         path: "carts",
-        element: <MyCart />,
+        element: (
+          <ProtectedRoute>
+            <MyCart />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "products/new",
-        element: <AddProducts />,
+        element: (
+          <ProtectedRoute requireAdmin>
+            <AddProducts />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

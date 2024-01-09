@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import Navbar from './components/Navbar';
+import { AuthContextProvider } from './context/AuthContext';
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -19,9 +20,9 @@ export default function App() {
   }, [data]);
 
   return (
-    <div>
+    <AuthContextProvider>
       <Navbar />
       <Outlet context={{isLoading, error, products, handleAdd}} />
-    </div>
+    </AuthContextProvider>
   );
 }

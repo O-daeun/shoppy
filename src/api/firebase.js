@@ -6,7 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, get } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
-  prompt: "select_account",
+  prompt: "select_account", // 자동로그인되지 않도록 설정
 });
 const database = getDatabase(app);
 
@@ -38,7 +38,6 @@ export function onUserStateChange(callback) {
   });
 }
 
-// 네트워크 통신을 하니까 async 붙여줌
 async function adminUser(user) {
   return get(ref(database, "admins")) //
     .then((snapshot) => {
