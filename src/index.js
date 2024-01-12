@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import AllProducts from "./pages/AllProducts";
-import AddProducts from "./pages/AddProducts";
+import NewProducts from "./pages/NewProducts";
 import ProductDetails from "./pages/ProductDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
 import MyCart from "./pages/MyCart";
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         path: "products/new",
         element: (
           <ProtectedRoute requireAdmin>
-            <AddProducts />
+            <NewProducts />
           </ProtectedRoute>
         ),
       },
