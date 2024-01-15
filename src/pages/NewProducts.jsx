@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import InputText from "../components/ui/InputText";
 import Button from "../components/ui/Button";
 import InputFile from "../components/ui/InputFile";
-import { uploadImage } from '../api/uploader';
+import { uploadImage } from "../api/uploader";
+import { addNewProduct } from "../api/firebase";
 
 export default function NewProducts() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
-    uploadImage(file)
-    .then(url => {
+    uploadImage(file).then((url) => {
       console.log(url);
-      // Firebase에 새로운 제품을 추가함
-    })
-    // 제품의 사진을 Cloudinary에 업로드하고 URL을 획득
+      addNewProduct(product, url);
+    });
   };
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -50,8 +49,8 @@ export default function NewProducts() {
         />
         <InputText
           placeholder='옵션들(콤마(,)로 구분)'
-          name='option'
-          value={product.option}
+          name='options'
+          value={product.options}
           onChange={handleChange}
         />
         <InputText
