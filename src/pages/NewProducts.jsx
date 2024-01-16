@@ -1,19 +1,28 @@
 import React, { useState } from "react";
-import InputText from "../components/ui/InputText";
 import Button from "../components/ui/Button";
-import InputFile from "../components/ui/InputFile";
 import { uploadImage } from "../api/uploader";
 import { addNewProduct } from "../api/firebase";
 
 export default function NewProducts() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
+  const [isUploading, setIsUploading] = useState(false);
+  const [success, setSuccess] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
-    uploadImage(file).then((url) => {
-      console.log(url);
-      addNewProduct(product, url);
-    });
+    setIsUploading(true);
+    uploadImage(file) //
+      .then((url) => {
+        console.log(url);
+        addNewProduct(product, url) //
+          .then(() => {
+            setSuccess("성공적으로 제품이 추가되었습니다.");
+            setTimeout(() => {
+              setSuccess(null);
+            }, 4000);
+          });
+      })
+      .finally(() => setIsUploading(false));
   };
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -24,42 +33,63 @@ export default function NewProducts() {
     setProduct((product) => ({ ...product, [name]: value }));
   };
   return (
-    <section className='p-5'>
-      <h2 className='text-xl font-bold'>Add Products</h2>
-      {file && <img src={URL.createObjectURL(file)} alt='local file' />}
-      <form onSubmit={handleSubmit}>
-        <InputFile onChange={handleChange} />
-        <InputText
+    <section className='w-full text-center'>
+      <h2 className='text-2xl font-bold my-4'>새로운 제품 등록</h2>
+      {success && <p className='my-2'>✅ {success}</p>}
+      {file && (
+        <img
+          className='w-96 mx-auto mb-2'
+          src={URL.createObjectURL(file)}
+          alt='local file'
+        />
+      )}
+      <form className='flex flex-col px-12' onSubmit={handleSubmit}>
+        <input
+          type='file'
+          accept='image/*'
+          name='file'
+          required
+          onChange={handleChange}
+        />
+        <input
+          type='text'
           placeholder='제품명'
           name='title'
-          value={product.title}
+          value={product.title ?? ""}
           onChange={handleChange}
         />
-        <InputText
+        <input
+          type='text'
           placeholder='가격'
           name='price'
-          value={product.price}
+          value={product.price ?? ""}
           onChange={handleChange}
         />
-        <InputText
+        <input
+          type='text'
           placeholder='카테고리'
           name='category'
-          value={product.category}
+          value={product.category ?? ""}
           onChange={handleChange}
         />
-        <InputText
+        <input
+          type='text'
           placeholder='옵션들(콤마(,)로 구분)'
           name='options'
-          value={product.options}
+          value={product.options ?? ""}
           onChange={handleChange}
         />
-        <InputText
+        <input
+          type='text'
           placeholder='제품 설명'
           name='description'
-          value={product.description}
+          value={product.description ?? ""}
           onChange={handleChange}
         />
-        <Button text='제품 등록하기' />
+        <Button
+          text={isUploading ? "업로드중..." : "제품 등록하기"}
+          disabled={isUploading}
+        />
       </form>
       <p id='data'></p>
     </section>
