@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
-import AllProducts from "./pages/AllProducts";
+import Products from "./pages/Products";
 import NewProducts from "./pages/NewProducts";
 import ProductDetails from "./pages/ProductDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: <AllProducts />,
+        element: <Products />,
       },
       {
         path: "products/:itemId",
