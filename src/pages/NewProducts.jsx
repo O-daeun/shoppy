@@ -33,8 +33,8 @@ export default function NewProducts() {
     setProduct((product) => ({ ...product, [name]: value }));
   };
   return (
-    <section className='w-full text-center'>
-      <h2 className='text-2xl font-bold my-4'>새로운 제품 등록</h2>
+    <section className='w-full text-center py-10'>
+      <h2 className='text-2xl font-bold mb-8'>새로운 제품 등록</h2>
       {success && <p className='my-2'>✅ {success}</p>}
       {file && (
         <img
@@ -80,6 +80,7 @@ export default function NewProducts() {
           onChange={handleChange}
         />
         <input
+          className='mb-4'
           type='text'
           placeholder='제품 설명'
           name='description'

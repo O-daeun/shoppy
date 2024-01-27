@@ -2,6 +2,7 @@ import React from "react";
 import ProductCard from "../components/ProductCard";
 import { getProducts } from "../api/firebase";
 import { useQuery } from "react-query";
+import Loading from '../components/ui/Loading';
 
 export default function Products() {
   const {
@@ -11,7 +12,7 @@ export default function Products() {
   } = useQuery(["products"], getProducts);
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
       {error && <p>{error}</p>}
       <ul className='grid grid-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-4 p-4'>
         {products &&
