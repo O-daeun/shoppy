@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       colors: {
         brand: 'rgb(236 72 153)',
+      },
+      backgroundImage: {
+        banner: `url('../public/images/banner.jpg')`
       }
     },
   },
