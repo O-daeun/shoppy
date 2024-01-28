@@ -4,7 +4,7 @@
 
 ## 🕰️ 개발 기간
 
-2023. 11 ~ (진행중)
+### 2023. 11 ~ (진행중)
 
 ## 🔗 URL
 
@@ -13,8 +13,18 @@
 ## ⚙️ 개발 환경
 
 - **React.js**
-- CSS : **Tailwind CSS**
-- Authentication : **Firebase**
-- Database : **Cloudinary, Firebase**
-- Deploy : **Netlify**
-- etc : **React Router, React Query, uuid**
+- CSS: **Tailwind CSS**
+- Authentication: **Firebase**
+- Database: **Cloudinary, Firebase**
+- Deploy: **Netlify**
+- etc: **React Router, React Query, uuid**
+
+## 📌 주요 기능
+
+### 구글계정 로그인
+<img src="https://github.com/O-daeun/shoppy/assets/105799083/5a170004-6e37-4a91-b5bf-4278df5ffd28" width="200" />
+- firebase의 Authentication을 활용하여 구글계정의 로그인 지원
+
+ ### 
+
+
