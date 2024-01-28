@@ -25,7 +25,7 @@
 
 ### 구글계정 로그인
 <section style="display:flex;">
- <img style="display: block" src="https://github.com/O-daeun/shoppy/assets/105799083/5a170004-6e37-4a91-b5bf-4278df5ffd28" width="200" />
+ <img src="https://github.com/O-daeun/shoppy/assets/105799083/5a170004-6e37-4a91-b5bf-4278df5ffd28" width="200" />
  <p>구글계정의 로그인 지원</p>
 </section>
  ### 
